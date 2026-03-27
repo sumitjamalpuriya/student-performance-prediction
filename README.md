@@ -1,26 +1,40 @@
-# Student Performance Prediction
+# Student Performance Prediction using Machine Learning
 
-## Description
-This project predicts student performance using machine learning. It uses factors like study hours, attendance, and previous marks.
+## Introduction
+This project predicts student performance using machine learning.
 
-## Features
-- Predict pass/fail
-- Predict final marks
+## Problem
+Students are often unaware of their academic performance.
 
-## Technologies Used
+## Objective
+- Predict Pass/Fail
+- Predict Final Marks
+
+## Dataset
+Features:
+- Study Hours
+- Attendance
+- Previous Marks
+- Assignment
+- Sleep Hours
+
+## Models Used
+- Logistic Regression (classification)
+- Linear Regression (regression)
+
+## Tools
 - Python
 - Pandas
-- NumPy
 - Scikit-learn
 
 ## How to Run
-1. Install libraries:
-   pip install pandas numpy scikit-learn
+
+1. Install dependencies:
+   pip install pandas scikit-learn
 
 2. Run:
    python main.py
 
-## Project Files
-- data.csv → dataset
-- main.py → model code
-- report.pdf → project report
+## Output
+- Pass/Fail prediction
+- Marks prediction
