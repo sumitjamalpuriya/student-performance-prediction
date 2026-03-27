@@ -1,29 +1,36 @@
 import pandas as pd
+import warnings
 from sklearn.linear_model import LogisticRegression, LinearRegression
 
-# load dataset
+warnings.filterwarnings("ignore")
+
+# Load dataset
 data = pd.read_csv("data.csv")
 
-# convert Pass/Fail to numeric
+# Convert Pass/Fail to numeric
 data["Result"] = data["Result"].map({"Fail": 0, "Pass": 1})
 
-# features
+# Features and targets
 X = data[["StudyHours", "Attendance", "PreviousMarks", "Assignment", "SleepHours"]]
-
-# targets
 y_class = data["Result"]
 y_marks = data["FinalMarks"]
 
-# models
+# Models
 model_class = LogisticRegression()
 model_marks = LinearRegression()
 
-# train
+# Train models
 model_class.fit(X, y_class)
 model_marks.fit(X, y_marks)
 
-# sample prediction
-sample = [[5, 80, 65, 1, 6]]
+# Sample input
+sample = pd.DataFrame([[5, 80, 65, 1, 6]],
+columns=["StudyHours", "Attendance", "PreviousMarks", "Assignment", "SleepHours"])
 
-print("Pass/Fail Prediction (1=Pass, 0=Fail):", model_class.predict(sample))
-print("Predicted Marks:", model_marks.predict(sample))
+# Predictions
+result = model_class.predict(sample)[0]
+marks = model_marks.predict(sample)[0]
+
+# Output
+print("Pass/Fail (1=Pass, 0=Fail):", result)
+print("Predicted Marks:", round(marks, 2))
